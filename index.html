@@ -3,29 +3,50 @@
 <head>
 <meta charset="utf-8">
 <title>Turing Machine Emulator</title>
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<link rel="stylesheet" href="jquery-ui-1.10.4.custom.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script src="interface.js"></script>
-<style>
-#draggable, #draggable2, #draggable3 { border-style:dotted; border-width:3px; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
-</style>
- <script>
-
-</script>
+<link rel="stylesheet" type="text/css" href="tabs.css">
+<link rel="stylesheet" type="text/css" href="interface.css">
 </head>
 <body bgcolor="#EDD7F5">
-<div id="draggable" class="ui-widget-content">
-<p>Box 1</p>
+<div id="menu" class="tabs0">
+	<div class="tab">
+       <input type="radio" id="Menu" name="tab-group-2" checked>
+       <label for="Menu">Menu</label>
+       
+       <div class="content">
+           Menu!
+       </div> 
+   </div>
+   <div class="tab">
+       <input type="radio" id="Help" name="tab-group-2" checked>
+       <label for="Help">Help</label>
+       
+       <div class="content">
+           Help!
+       </div> 
+   </div>
 </div>
-<div id="draggable2" class="ui-widget-content">
-<p>Box 2</p>
+<div class="tabs1">
+    
+   <div class="tab">
+       <input type="radio" id="tab-1a" name="tab-group-1" checked>
+       <label for="tab-1a">Turing Machine </label>
+       
+       <div class="content">
+           Machine!
+       </div> 
+   </div>
+    
+   <div class="tab">
+       <input type="radio" id="tab-2a" name="tab-group-1">
+       <label for="tab-2a">Transition Editor</label>
+       
+       <div class="content">
+           Editor!
+       </div> 
+   </div>
+    
 </div>
-<div id="draggable3" class="ui-widget-content">
-<p>Box 3</p>
-</div>
+
 <div style="height: 5000px; width: 1px;"></div>
 </body>
 </html>
