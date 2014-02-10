@@ -5,48 +5,57 @@
 <title>Turing Machine Emulator</title>
 <link rel="stylesheet" type="text/css" href="tabs.css">
 <link rel="stylesheet" type="text/css" href="interface.css">
+<script src="interface.js"></script>
 </head>
-<body bgcolor="#EDD7F5">
-<div id="menu" class="tabs0">
+<body>
+<div id="menu" class="tabs">
 	<div class="tab">
        <input type="radio" id="Menu" name="tab-group-2" checked>
        <label for="Menu">Menu</label>
-       
        <div class="content">
-           Menu!
+           Menu!<br>
+		   <button type="button">New!</button> <br>
+		   <button type="button">Save!</button> <br>
+		   <button type="button">Load!</button> <br>
        </div> 
-   </div>
+   </div> 
    <div class="tab">
-       <input type="radio" id="Help" name="tab-group-2" checked>
+       <input type="radio" id="Help" name="tab-group-2">
        <label for="Help">Help</label>
-       
        <div class="content">
            Help!
        </div> 
    </div>
 </div>
-<div class="tabs1">
-    
+
+
+<div id="tm" class="tabs">
    <div class="tab">
        <input type="radio" id="tab-1a" name="tab-group-1" checked>
-       <label for="tab-1a">Turing Machine </label>
-       
+       <label for="tab-1a">Turing Machine</label>
        <div class="content">
-           Machine!
+           <button type="button">Play!</button>
+		   <button type="button">Stop!</button>
+		   <button type="button">Step!</button>
+		   <button type="button">Instant!</button>
        </div> 
    </div>
-    
    <div class="tab">
-       <input type="radio" id="tab-2a" name="tab-group-1">
-       <label for="tab-2a">Transition Editor</label>
-       
-       <div class="content">
-           Editor!
+       <input type="radio" id="transition" name="tab-group-1">
+       <label for="transition">Transition Editor</label>
+	   
+       <div class="content" id="transition-content">
+           <div> <button type="button" id="addstate-button" onclick="addState(states); states = states + 1;">Add State!</button> <br><br><br> </div>
+		   <div id="stateboxes"></div>
        </div> 
    </div>
-    
+   <div class="tab">
+       <input type="radio" id="tab-graph-view" name="tab-group-1">
+       <label for="tab-graph-view">Graph View Editor</label>
+       <div class="content">
+           Coming in version 0.3.
+       </div> 
+   </div>
 </div>
-
-<div style="height: 5000px; width: 1px;"></div>
 </body>
 </html>

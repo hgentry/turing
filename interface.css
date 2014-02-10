@@ -1,0 +1,32 @@
+body {
+ background-color:#EDD7F5;
+}
+#menu {   
+  left: 20px;
+  top: 20px;
+  bottom: 20px;
+  width:15%;
+}
+
+#tm {
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  width:80%;
+}
+
+button {
+	width:100px;
+}
+
+.statebox {
+  border: 1px solid #ccc; 
+  position: relative;
+  display: table-cell;
+  min-width:100px;
+  background:#79B6BD;
+}
+
+#addstate-button {
+	position:fixed;
+}
