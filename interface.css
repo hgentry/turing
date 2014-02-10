@@ -16,17 +16,32 @@ body {
 }
 
 button {
-	width:100px;
+	min-width:100px;
 }
 
 .statebox {
   border: 1px solid #ccc; 
   position: relative;
   display: table-cell;
-  min-width:100px;
+  min-width:225px;
   background:#79B6BD;
+}
+
+.transTable {
+	text-align:center;
+}
+
+.dataArea {
+	height:20px;
+	width:20px;
+	resize:none;
+	
 }
 
 #addstate-button {
 	position:fixed;
+}
+
+.delstate-button {
+	float:right;
 }
