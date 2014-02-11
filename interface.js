@@ -26,11 +26,17 @@ function addState(n)
 	addTransitionButton.innerHTML = "Add Transition";
 	addTransitionButton.onclick = function(){addTransition(n)};
 	
+	var addTransitionButtonTop = document.createElement("button");
+	addTransitionButtonTop.setAttribute('class','addtransition-button-top');
+	addTransitionButtonTop.innerHTML = "Add Transition";
+	addTransitionButtonTop.onclick = function(){addTransition(n)};
 	
 	
 	
 	document.getElementById("stateboxes").appendChild(div);
 	div.appendChild(del);
+	div.appendChild(addTransitionButtonTop);
+	
 	div.appendChild(statebox);
 	div.appendChild(addTransitionButton);
 	
@@ -45,20 +51,28 @@ function addTransition(n) {
 	
 	var charSeen = document.createElement('textarea');
 	charSeen.setAttribute('class','dataArea');
+	charSeen.onchange=limitLength(charSeen);
+	charSeen.addEventListener('input',function(){limitLength(charSeen);});
 	tr.insertCell(0).appendChild(charSeen);
 	
 	tr.insertCell(1);
 	
 	var charNext = document.createElement('textarea');
+	charNext.onchange=limitLength(charNext);
+	charNext.addEventListener('input',function(){limitLength(charNext);});
 	charNext.setAttribute('class','dataArea');
 	tr.insertCell(2).appendChild(charNext);
 	
 	var stateNext = document.createElement('textarea');
 	stateNext.setAttribute('class','dataArea');
+	stateNext.onchange=limitLength(stateNext);
+	stateNext.addEventListener('input',function(){limitLength(stateNext);});
 	tr.insertCell(3).appendChild(stateNext);
 	
 	var dirNext = document.createElement('textarea');
 	dirNext.setAttribute('class','dataArea');
+	dirNext.onchange=limitLength(dirNext);
+	dirNext.addEventListener('input',function(){limitLength(dirNext);});
 	tr.insertCell(4).appendChild(dirNext);
 	
 	var del = document.createElement("button");
@@ -69,6 +83,14 @@ function addTransition(n) {
 	
 	transTable.appendChild(tr);
 	
+}
+
+function limitLength(textArea)
+{
+	if(textArea.value.length > 1)
+	{
+		textArea.value=textArea.value.substring(textArea.value.length-1,textArea.value.length);
+	}
 }
 
 function deleteStateboxElement(tr)

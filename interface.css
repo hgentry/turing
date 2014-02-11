@@ -1,6 +1,7 @@
 body {
- background-color:#EDD7F5;
+ background-color:#DBDBDB;
 }
+
 #menu {   
   left: 20px;
   top: 20px;
@@ -8,23 +9,35 @@ body {
   width:15%;
 }
 
+
+
 #tm {
   right: 20px;
   top: 20px;
   bottom: 20px;
-  width:80%;
+  width:82%;
 }
+
+#stateboxes {
+	display:table;
+	border-spacing:10px;
+}
+
 
 button {
 	min-width:100px;
 }
 
 .statebox {
-  border: 1px solid #ccc; 
+  border: 0px solid #ccc; 
   position: relative;
   display: table-cell;
-  min-width:225px;
+  min-width:280px;
   background:#79B6BD;
+}
+
+#tm-content {
+	padding:10px;
 }
 
 .transTable {
@@ -35,13 +48,20 @@ button {
 	height:20px;
 	width:20px;
 	resize:none;
-	
+	text-align:center;
+	font-size:150%;
+	overflow:hidden;
 }
 
 #addstate-button {
 	position:fixed;
+	margin:10px;
 }
 
 .delstate-button {
+	float:right;
+}
+
+.addtransition-button-top {
 	float:right;
 }

@@ -11,10 +11,10 @@
 .tab label {
   background: #eee; 
   padding: 10px; 
-  border: 1px solid #ccc; 
-  margin-left: -1px; 
+  border: 0px solid #ccc;  
+  margin-right: 10px; 
   position: relative;
-  left: 1px; 
+   
  
 }
 
@@ -26,17 +26,17 @@
   position: absolute;
   top: 28px;
   left: 0;
-  background: #B9E6EB;
+  background: #A3CFD1;
   right: 0;
   bottom: 0;
-  padding: 20px;
-  border: 1px solid #ccc; 
+  padding: 0px;
+  border: 0px solid #ccc; 
   overflow:auto;
 }
 
 [type=radio]:checked ~ label {
-  background: #B9E6EB;
-  border-bottom: 1px solid #B9E6EB;
+  background: #A3CFD1;
+  border: 0px solid #A3CFD1;
   z-index: 2;
 }
 
