@@ -5,8 +5,11 @@
 <title>Turing Machine Emulator</title>
 <link rel="stylesheet" type="text/css" href="tabs.css">
 <link rel="stylesheet" type="text/css" href="interface.css">
+<script src="lib-hgentry.js"></script>
 <script src="interface.js"></script>
+<script src="turing.js"></script>
 </head>
+
 <body>
 <div id="menu" class="tabs">
 	<div class="tab">
@@ -23,7 +26,7 @@
        <input type="radio" id="Help" name="tab-group-2">
        <label for="Help">Help</label>
        <div class="content">
-           Version 0.2
+           Version 0.2<br><br>Buttons that end in ! are not yet implemented.
        </div> 
    </div>
 </div>
@@ -45,7 +48,7 @@
        <label for="transition">Transition Editor</label>
 	   
        <div class="content" id="transition-content">
-           <div> <button type="button" id="addstate-button" onclick="addState(states);">Add State!</button> <br><br><br> </div>
+           <div> <button type="button" id="addstate-button" onclick="addState(states);">Add State</button> <br><br><br> </div>
 		   <div id="stateboxes"></div>
        </div> 
    </div>

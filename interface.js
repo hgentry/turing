@@ -19,7 +19,7 @@ function addState(n)
 	var del = document.createElement("button");
 	del.setAttribute('class','delstate-button');
 	del.innerHTML = "Delete";
-	del.onclick=function(){deleteStateboxElement(div);};
+	del.onclick=function(){removeState(n); deleteStateboxElement(div);};
 	
 	var addTransitionButton = document.createElement("button");
 	addTransitionButton.setAttribute('class','addtransition-button');
@@ -52,33 +52,46 @@ function addTransition(n) {
 	var charSeen = document.createElement('textarea');
 	charSeen.setAttribute('class','dataArea');
 	charSeen.onchange=limitLength(charSeen);
-	charSeen.addEventListener('input',function(){limitLength(charSeen);});
+	charSeen.addEventListener('input',function()
+	{
+		if(!((n + "_" + charSeen.value) in ruleset))
+		{
+			charSeen.disabled = true; 
+			limitLength(charSeen); 
+			addRule(charSeen);
+		}
+		else
+		{
+			charSeen.value = "";
+		}
+		
+	});
 	tr.insertCell(0).appendChild(charSeen);
 	
 	tr.insertCell(1);
 	
 	var charNext = document.createElement('textarea');
 	charNext.onchange=limitLength(charNext);
-	charNext.addEventListener('input',function(){limitLength(charNext);});
+	charNext.addEventListener('input',function(){limitLength(charNext); addRule(charNext);});
 	charNext.setAttribute('class','dataArea');
 	tr.insertCell(2).appendChild(charNext);
 	
 	var stateNext = document.createElement('textarea');
 	stateNext.setAttribute('class','dataArea');
 	stateNext.onchange=limitLength(stateNext);
-	stateNext.addEventListener('input',function(){limitLength(stateNext);});
+	stateNext.addEventListener('input',function(){limitLength(stateNext); addRule(stateNext);});
 	tr.insertCell(3).appendChild(stateNext);
 	
 	var dirNext = document.createElement('textarea');
 	dirNext.setAttribute('class','dataArea');
 	dirNext.onchange=limitLength(dirNext);
-	dirNext.addEventListener('input',function(){limitLength(dirNext);});
+	dirNext.addEventListener('input',function(){limitLength(dirNext); addRule(dirNext);});
 	tr.insertCell(4).appendChild(dirNext);
 	
 	var del = document.createElement("button");
 	del.setAttribute('class','delstate-button');
 	del.innerHTML = "Delete";
-	del.onclick=function(){deleteTransitionElement(tr);};
+	del.onclick=function(){ removeRule(del); deleteTransitionElement(tr);};
 	tr.insertCell(5).appendChild(del);
 	
 	transTable.appendChild(tr);
@@ -92,6 +105,50 @@ function limitLength(textArea)
 		textArea.value=textArea.value.substring(textArea.value.length-1,textArea.value.length);
 	}
 }
+
+function addRule(ta)
+{
+	var cells = ta.parentNode.parentNode.childNodes;
+	var statebox = ta.parentNode.parentNode.parentNode.parentNode.parentNode;
+	var state = statebox.getAttribute('id').substring(statebox.getAttribute('id').indexOf('-')+1);
+	
+	
+	var charSeen = cells[0].childNodes[0].value;
+	var charNext = cells[2].childNodes[0].value;
+	var stateNext = cells[3].childNodes[0].value;
+	var dirNext = cells[4].childNodes[0].value;
+	
+	ruleset[state + "_" + charSeen] = [charNext, stateNext, dirNext];
+	
+	console.log(ruleset);
+}
+
+function removeRule(ta)
+{
+	var cells = ta.parentNode.parentNode.childNodes;
+	var statebox = ta.parentNode.parentNode.parentNode.parentNode.parentNode;
+	var state = statebox.getAttribute('id').substring(statebox.getAttribute('id').indexOf('-')+1);
+	
+	
+	var charSeen = cells[0].childNodes[0].value.substring(0,1);
+	
+	ruleset.removeItem(state + "_" + charSeen);
+	
+	console.log(ruleset);
+}
+
+function removeState(n)
+{
+	for(var k in ruleset)
+	{
+		if(k.substring(0,k.indexOf("_")) == n + "")
+		{
+			ruleset.removeItem(k);
+		}
+	}
+	console.log(ruleset);
+}
+
 
 function deleteStateboxElement(tr)
 {
