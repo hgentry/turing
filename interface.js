@@ -10,7 +10,7 @@ function addState(n)
 	div.setAttribute('id','statebox-'+n);
 
 	var transTable = document.createElement("table");
-	transTable.innerHTML = "<tr><td> Char </td> <td> -> </td> <td>Char</td> <td>State</td> <td>Dir</td></tr>";
+	transTable.innerHTML = "<tr><td> Char </td> <td> -> </td> <td>Char</td> <td>State</td> <td>{L,R}</td></tr>";
 	statebox.appendChild(transTable);
 	transTable.setAttribute('id', 'transTable-' +n);
 	transTable.setAttribute('class', 'transTable');
@@ -78,8 +78,7 @@ function addTransition(n) {
 	
 	var stateNext = document.createElement('textarea');
 	stateNext.setAttribute('class','dataArea');
-	stateNext.onchange=limitLength(stateNext);
-	stateNext.addEventListener('input',function(){limitLength(stateNext); addRule(stateNext);});
+	stateNext.addEventListener('input',function(){addRule(stateNext);});
 	tr.insertCell(3).appendChild(stateNext);
 	
 	var dirNext = document.createElement('textarea');
@@ -116,6 +115,8 @@ function addRule(ta)
 	var charSeen = cells[0].childNodes[0].value;
 	var charNext = cells[2].childNodes[0].value;
 	var stateNext = cells[3].childNodes[0].value;
+	if(stateNext == "A" || stateNext =="a") stateNext = -1;
+	if(stateNext == "R" || stateNext =="r") stateNext = -2;
 	var dirNext = cells[4].childNodes[0].value;
 	
 	ruleset[state + "_" + charSeen] = [charNext, stateNext, dirNext];
@@ -172,6 +173,11 @@ function resetButton()
 	drawMachine();
 }
 
+function stateButton()
+{
+	state = document.getElementById("statearea").value;
+}
+
 function deleteStateboxElement(tr)
 {
 	tr.parentNode.removeChild(tr);
@@ -182,3 +188,44 @@ function deleteTransitionElement(tr)
 	tr.parentNode.removeChild(tr);
 }
 
+function stateboxUpdate(x)
+{
+	currentState = document.getElementById("statearea").value;
+}
+
+function tapeboxUpdate(x)
+{
+	tape = document.getElementById("tape").value;
+}
+
+function clearStateboxes()
+{
+	document.getElementById("stateboxes").innerHTML="";
+	states = 0;
+	addState(0);
+}
+
+function newButton()
+{
+	clearRules();
+	clearStateboxes();
+	reset();
+	drawMachine();
+}
+
+function loadButton()
+{
+	newButton();
+	var str = document.getElementById("savedata").value;
+	readMachineCode(str);
+	document.getElementById("statearea").value = currentState;
+	document.getElementById("tape").value = tape;
+	drawMachine();
+}
+
+function saveButton()
+{
+	reset();
+	document.getElementById("savedata").value = outputMachineCode();
+	drawMachine();
+}

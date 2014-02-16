@@ -18,9 +18,11 @@
        <label for="Menu">Menu</label>
        <div class="content">
            Menu!<br>
-		   <button type="button">New!</button> <br>
-		   <button type="button">Save!</button> <br>
-		   <button type="button">Load!</button> <br>
+		   <button type="button" onclick="newButton()">New!</button> <br>
+		   <button type="button" onclick="saveButton()">Save!</button> <br>
+		   <button type="button" onclick="loadButton()">Load!</button> <br>
+		   <textarea id="savedata">Paste machine here, and click Load</textarea><br>
+		   <a href="strcmp.txt">Sample TM File(strcmp)</a>
        </div> 
    </div> 
    <div class="tab">
@@ -43,9 +45,11 @@
 		   <button type="button" onclick="stepButton()">Step</button>
 		   <button type="button" onclick="resetButton()">Reset</button>
 		   <br><br>
-		   <div id="input-holder">Input:
+		   
+		   <div id="input-holder">Start State:<textarea class="dataArea" id="statearea">0</textarea>
+		   Input:
 		   <textarea id="tape"></textarea>
-		   <button type="button" onclick="resetButton()">Set Input</button>
+		   
 		   </div>
 		   <div id="machineAnim"></div>
        </div> 
