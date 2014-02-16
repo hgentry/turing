@@ -43,6 +43,8 @@ function addState(n)
 	addTransition(n);
 	
 	if(n == states) states += 1;
+	
+	return statebox;
 }
 
 function addTransition(n) {
@@ -94,7 +96,7 @@ function addTransition(n) {
 	tr.insertCell(5).appendChild(del);
 	
 	transTable.appendChild(tr);
-	
+	return tr;
 }
 
 function limitLength(textArea)
@@ -218,8 +220,9 @@ function loadButton()
 	newButton();
 	var str = document.getElementById("savedata").value;
 	readMachineCode(str);
-	document.getElementById("statearea").value = currentState;
-	document.getElementById("tape").value = tape;
+	//document.getElementById("statearea").value = currentState;
+	//document.getElementById("tape").value = tape;
+	populateEditor();
 	drawMachine();
 }
 
@@ -229,3 +232,49 @@ function saveButton()
 	document.getElementById("savedata").value = outputMachineCode();
 	drawMachine();
 }
+
+function populateEditor()
+{
+	for(var k in ruleset)
+	{
+		if(k.indexOf("_") > 0 )
+		{
+			//Just tear the rule to pieces for later
+			addToState = k.substring(0, k.indexOf("_"));
+			addCharSeen = k.substring(k.indexOf("_") + 1);
+			addNextChar= ruleset[k][0];
+			addNextState = ruleset[k][1];
+			addNextDir = ruleset[k][2];
+			
+			//If there isn't a box for this state yet, add one
+			statebox = document.getElementById("statebox-"+addToState);
+			if(statebox == null) statebox = addState(addToState);
+			
+			//TODO: doublecheck that a rule isn't a duplicate here
+			
+			//Make a row for the rule
+			tr = addTransition(addToState);
+			tr.cells[0].childNodes[0].value = addCharSeen;
+			tr.cells[2].childNodes[0].value = addNextChar;
+			tr.cells[3].childNodes[0].value = addNextState;
+			tr.cells[4].childNodes[0].value = addNextDir;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

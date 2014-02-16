@@ -110,7 +110,7 @@ function outputMachineCode()
 	var ret = currentState + "\n" + tape + "\n";
 	for(var k in ruleset)
 	{
-		if(k.indexOf("_") != -1)
+		if(k.indexOf("_") > 0)
 		{
 			ret += k.substring(0, k.indexOf("_")) + ",";
 			ret += k.substring(k.indexOf("_") + 1) + ",";
