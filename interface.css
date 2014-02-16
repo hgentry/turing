@@ -9,7 +9,10 @@ body {
   width:15%;
 }
 
-
+#machineAnim {
+  font-family:monospace;
+  font-size:200%;
+}
 
 #tm {
   right: 20px;
@@ -51,6 +54,16 @@ button {
 	text-align:center;
 	font-size:150%;
 	overflow:hidden;
+}
+
+#tape {
+	height:20px;
+	width:300px;
+	font-size:150%;
+	overflow:auto;
+}
+#input-holder {
+	vertical-align:middle;
 }
 
 #addstate-button {

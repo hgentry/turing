@@ -8,6 +8,7 @@
 <script src="lib-hgentry.js"></script>
 <script src="interface.js"></script>
 <script src="turing.js"></script>
+<script src="init.js"></script>
 </head>
 
 <body>
@@ -37,10 +38,16 @@
        <input type="radio" id="tm-tab" name="tab-group-1" checked>
        <label for="tm-tab">Turing Machine</label>
        <div class="content" id="tm-content">
-           <button type="button">Play!</button>
-		   <button type="button">Stop!</button>
-		   <button type="button">Step!</button>
-		   <button type="button">Instant!</button>
+           <button type="button" onclick="playButton()">Play</button>
+		   <button type="button" onclick="stopButton()">Stop</button>
+		   <button type="button" onclick="stepButton()">Step</button>
+		   <button type="button" onclick="resetButton()">Reset</button>
+		   <br><br>
+		   <div id="input-holder">Input:
+		   <textarea id="tape"></textarea>
+		   <button type="button" onclick="resetButton()">Set Input</button>
+		   </div>
+		   <div id="machineAnim"></div>
        </div> 
    </div>
    <div class="tab">

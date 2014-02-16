@@ -149,6 +149,28 @@ function removeState(n)
 	console.log(ruleset);
 }
 
+function playButton()
+{
+	play();
+	drawMachine();
+}
+function stepButton()
+{
+	step();
+	drawMachine();
+}
+
+function stopButton()
+{
+	stop();
+	drawMachine();
+}
+
+function resetButton()
+{
+	reset();
+	drawMachine();
+}
 
 function deleteStateboxElement(tr)
 {
@@ -160,4 +182,3 @@ function deleteTransitionElement(tr)
 	tr.parentNode.removeChild(tr);
 }
 
-window.onload=function(){addState(0);};
